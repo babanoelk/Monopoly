@@ -26,6 +26,23 @@ public class Game {
 
     public void setup() {
 
+        int count = 0;
+
+        FileIO io = new FileIO();
+        ArrayList<String> data = io.readGameData("src/data.csv");
+
+        if(data.size()>0) {
+
+// OVERSÆT FIL INPUT DATA TIL OBJEKTER
+
+            for (String s : data) {
+                String[] line = s.split(",");
+                String name = line[0];
+                int balance = Integer.parseInt(line[1].trim());
+                Player c = registerPlayer(name, 4);
+                c.receiveAmount(balance);
+            }
+
     }
 
     private void endGame() {
