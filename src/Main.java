@@ -1,3 +1,7 @@
+import model.Player;
+import util.FileIO;
+import util.TextUI;
+
 import java.util.ArrayList;
 
 public class Main {
@@ -27,7 +31,7 @@ public class Main {
                 String[] line = s.split(",");
                 String name = line[0];
                 int balance = Integer.parseInt(line[1].trim());
-                Customer c = bank.registerCustomer(name);
+                Player c = bank.registerCustomer(name);
                 c.receiveAmount(balance);
             }
 
@@ -37,7 +41,7 @@ public class Main {
 
             while (count < bank.customerLimit) {
                 String name = ui.getInput("Skriv kundens navn: ");
-                Customer c = bank.registerCustomer(name);
+                Player c = bank.registerCustomer(name);
                 c.receiveAmount(30000);
                 count++;
             }
@@ -45,7 +49,7 @@ public class Main {
 
 
         //Testcode
-        Customer c = bank.getCustomer(0);
+        Player c = bank.getCustomer(0);
         bank.displayCustomers();
         c.receiveAmount(100000);
         //todo: add this line to the endGame method in class Game

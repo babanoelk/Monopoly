@@ -1,8 +1,10 @@
+package model;
+
 public class Account {
     private int balance;
     public Account(){
     }
-    int getBalance(){
+    public int getBalance(){
         return balance;
     }
 

@@ -1,3 +1,5 @@
+import model.Player;
+
 import java.util.ArrayList;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 
 public class Bank {
     public int customerLimit ;
-    private ArrayList<Customer> customers = new ArrayList<>();
+    private ArrayList<Player> players = new ArrayList<>();
     public Bank(int customerLimit){
         this.customerLimit = customerLimit;
     }
@@ -18,22 +20,22 @@ public class Bank {
     public static int getTotalBanks(){
         return 1;
     }
-    public Customer registerCustomer(String name){
-        Customer c = new Customer(name);
-        customers.add(c);
+    public Player registerCustomer(String name){
+        Player c = new Player(name);
+        players.add(c);
         return c;
     }
 
     public void displayCustomers(){
-        for (Customer c:customers  ) {
+        for (Player c: players) {
             System.out.println(c);
         }
     }
-    public Customer getCustomer(int i){
-       return customers.get(i);
+    public Player getCustomer(int i){
+       return players.get(i);
     }
-    public ArrayList<Customer> getCustomers(){
-        return customers;
+    public ArrayList<Player> getCustomers(){
+        return players;
     }
     //todo: add endGame method
 }
