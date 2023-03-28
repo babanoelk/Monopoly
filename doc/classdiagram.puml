@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Main
+class Game
+
+package "util"{
+class TextUI
+class FileIO
+}
+package "model"{
+class Player
+class Account
+}
+Main *-- Game
+Game *-- TextUI
+Game *-- FileIO
+Game *-- Player
+Player *-- Account
+
+Main : + static void main(string [] args)
+
+Player : -int id
+Player  : -String name
+Player  : -Account account
+Player  : -{static} int counter
+Player  : +Player(String name)
+Player  : +int getId()
+Player  : +String getName()
+Player  : +String toString()
+Player  : +int getBalance()
+
+Account : - int balance
+Account : + Account()
+Account : + int getBalance()
+Account : + void setBalance(int amount)
+Account : + void updateBalance(int amount)
+
+Game : - ArrayList<Player> players
+Game : - int maxPlayers
+Game : - TextUI ui
+Game : - FileIO io
+Game : + Game(int maxPlayers)
+Game : + void registerPlayer(String name, int amount)
+Game : + void setup()
+Game : - void endGame()
+Game : + void displayPlayers()
+Game : + Player getPlayer(int i)
+Game : + ArrayList<Player> getPlayers()
+
+TextUI : + String getInput(String msg)
+TextUI : - Scanner scanner
+
+FileIO : - Scanner scanner
+FileIO : - File file
+FileIO : + readGameData(String path)
+FileIO : + void saveData(String path, ArrayList<Player> players)
+
+@enduml
