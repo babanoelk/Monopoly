@@ -1,3 +1,6 @@
+package model;
+
+
 public class Player {
     private Account account;
     private String name;

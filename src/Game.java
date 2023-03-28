@@ -27,10 +27,8 @@ public class Game {
         }
     }
 
-    public void setup(){
+    public void setup() {
         TextUI ui = new TextUI();
-
-        FileIO fileIO = new FileIO();
         ArrayList<String> data = fileIO.readGameData("src/data.csv");
 
         if(data.size()>0) {
@@ -59,5 +57,8 @@ public class Game {
     public ArrayList<Player> getPlayers(){
         return players;
     }
-    //todo: add endGame method
+
+    public void endGame(){
+        fileIO.saveData("src/data.csv", players);
+    }
 }

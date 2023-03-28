@@ -1,9 +1,12 @@
+package util;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import model.Player;
 
 public class FileIO {
     File file;
@@ -37,17 +40,11 @@ public class FileIO {
         FileWriter writer = null;
         try {
             writer = new FileWriter(path);
-
             writer.write("name, balance \n");
-
             for (Player c: players) {
                 writer.write(c.getName()+","+c.getBalance()+"\n");
             }
-
-
             writer.close();
-
-
 
         }catch(IOException e){
 
