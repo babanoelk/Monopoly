@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Main {
 
 
@@ -10,7 +8,7 @@ public class Main {
         // a. loads or prompts for gamedata,
         // b. creates the model.Player objects
         // (reuse the code beneath)
-
+        game.setup();
 
 
 
@@ -19,6 +17,7 @@ public class Main {
         //Testcode
         game.displayPlayers();
         //todo: add this line to the endGame method in class Game
+
 
     }
 }

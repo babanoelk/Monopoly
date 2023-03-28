@@ -19,6 +19,7 @@ public class Player {
     }
 
     public int receiveAmount(int i) {
+
         this.account.updateBalance(i);
         return this.account.getBalance();
     }

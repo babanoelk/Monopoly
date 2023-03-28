@@ -1,21 +1,18 @@
+import model.*;
+import util.*;
 import java.util.ArrayList;
-//Todo: - Rename class to Game,
-//      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
-//      - Add the setup method:
-//      a. loads or prompts for gamedata,
-//      b. creates the Player objects
-//      (reuse the code from the main method)
+
 
 public class Game {
     public int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
+    FileIO fileIO = new FileIO();
 
     public Game(int maxPlayers){
         this.maxPlayers = maxPlayers;
     }
 
-
-    public void registerPlayer(String name, int amount){
+    public void registerPlayer(String name, int amount) {
         Player player = new Player(name);
         player.receiveAmount(amount);
         players.add(player);
@@ -32,7 +29,6 @@ public class Game {
         ArrayList<String> data = fileIO.readGameData("src/data.csv");
 
         if(data.size()>0) {
-
         // OVERSÆT FIL INPUT DATA TIL OBJEKTER
             for (String s : data) {
                 String[] line = s.split(",");
@@ -40,7 +36,6 @@ public class Game {
                 int startBalance = Integer.parseInt(line[1].trim());
                 registerPlayer(name, startBalance);
             }
-
         // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
         }else {
             int count = 0;
@@ -51,9 +46,11 @@ public class Game {
             }
         }
     }
-    public Player getPlayer(int i){
+
+    public Player getPlayer(int i) {
        return players.get(i);
     }
+
     public ArrayList<Player> getPlayers(){
         return players;
     }
