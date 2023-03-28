@@ -11,7 +11,7 @@ public class Main {
         // b. creates the Player objects
         // (reuse the code beneath)
 
-
+        game.setup();
 
 
 

@@ -25,34 +25,11 @@ public class FileIO {
                 data.add(line);
             }
         } catch (FileNotFoundException e) {
-             System.out.println("The file was not found");
+            System.out.println("The file was not found");
 
         }
 
         return data;
     }
-
-
-    public void saveData(String path, ArrayList<Player> players){
-        FileWriter writer = null;
-        try {
-            writer = new FileWriter(path);
-
-            writer.write("name, balance \n");
-
-            for (Player c: players) {
-                writer.write(c.getName()+","+c.getAccount().getBalance()+"\n");
-            }
-
-
-            writer.close();
-
-
-
-        }catch(IOException e){
-
-
-        }
-
-    }
 }
+

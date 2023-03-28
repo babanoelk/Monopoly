@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
@@ -33,7 +35,6 @@ public class Game {
 
         if (data.size() > 0) {
 
-// OVERSÆT FIL INPUT DATA TIL OBJEKTER
 
             for (String s : data) {
                 String[] line = s.split(",");
@@ -45,8 +46,30 @@ public class Game {
 
         }
     }
-    private void endGame() {
-    }
+    private void endGame(String path, ArrayList<Player> players) {
+            FileWriter writer = null;
+            try {
+                writer = new FileWriter(path);
+
+                writer.write("name, balance \n");
+
+                for (Player c: players) {
+                    writer.write(c.getName()+","+c.getAccount().getBalance()+"\n");
+                }
+
+
+                writer.close();
+
+
+
+            }catch(IOException e){
+
+
+            }
+
+        }
+    
+
 
     public void displayPlayers(){
         for (Player c: Players) {
