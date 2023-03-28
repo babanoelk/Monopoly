@@ -31,7 +31,7 @@ public class Game {
         FileIO io = new FileIO();
         ArrayList<String> data = io.readGameData("src/data.csv");
 
-        if(data.size()>0) {
+        if (data.size() > 0) {
 
 // OVERSÆT FIL INPUT DATA TIL OBJEKTER
 
@@ -43,10 +43,9 @@ public class Game {
                 c.receiveAmount(balance);
             }
 
+        }
     }
-
     private void endGame() {
-
     }
 
     public void displayPlayers(){
