@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
         //todo: change to instantiation of Game class
-        Bank bank = new Bank(3);
+        Game game = new Game(3);
         //todo:  call game.setup() - a method you will add to the Game class that
         // a. loads or prompts for gamedata,
         // b. creates the Player objects
@@ -27,7 +27,7 @@ public class Main {
                 String[] line = s.split(",");
                 String name = line[0];
                 int balance = Integer.parseInt(line[1].trim());
-                Customer c = bank.registerCustomer(name);
+                Player c = game.registerPlayer(name);
                 c.receiveAmount(balance);
             }
 
@@ -35,9 +35,9 @@ public class Main {
 
         }else {
 
-            while (count < bank.customerLimit) {
+            while (count < game.customerLimit) {
                 String name = ui.getInput("Skriv kundens navn: ");
-                Customer c = bank.registerCustomer(name);
+                Player c = game.registerPlayer(name);
                 c.receiveAmount(30000);
                 count++;
             }
@@ -45,11 +45,11 @@ public class Main {
 
 
         //Testcode
-        Customer c = bank.getCustomer(0);
-        bank.displayCustomers();
+        Player c = game.getPlayer(0);
+        game.displayPlayers();
         c.receiveAmount(100000);
         //todo: add this line to the endGame method in class Game
-        fileIO.saveData("src/data.csv", bank.getCustomers());
+        fileIO.saveData("src/data.csv", game.getPlayers());
 
     }
 }

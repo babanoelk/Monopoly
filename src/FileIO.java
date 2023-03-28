@@ -33,14 +33,14 @@ public class FileIO {
     }
 
 
-    public void saveData(String path, ArrayList<Customer> customers){
+    public void saveData(String path, ArrayList<Player> players){
         FileWriter writer = null;
         try {
             writer = new FileWriter(path);
 
             writer.write("name, balance \n");
 
-            for (Customer c: customers) {
+            for (Player c: players) {
                 writer.write(c.getName()+","+c.getAccount().getBalance()+"\n");
             }
 

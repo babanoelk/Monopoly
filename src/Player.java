@@ -1,10 +1,10 @@
-public class Customer {
+public class Player {
     private Account account;
     private String name;
     private int id;
     private static int counter = 1;
 
-    public Customer(String name){
+    public Player(String name){
         this.name = name;
         this.id  = counter;
         this.account = new Account();
