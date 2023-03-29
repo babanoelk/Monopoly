@@ -1,3 +1,7 @@
+package model;
+
+import model.Account;
+
 public class Player {
     private Account account;
     private String name;
@@ -20,6 +24,10 @@ public class Player {
         return this.account.getBalance();
     }
 
+
+    public int getBalance(){
+        return this.getAccount().getBalance();
+    }
 
 
 

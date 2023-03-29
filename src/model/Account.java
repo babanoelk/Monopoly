@@ -1,3 +1,5 @@
+package model;
+
 public class Account {
     private int balance;
     public Account(){
@@ -6,7 +8,7 @@ public class Account {
         return balance;
     }
 
-    void setBalance(int amount){
+    public void setBalance(int amount){
         this.balance = amount;
     }
 

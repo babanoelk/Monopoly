@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import model.Player;
 
 public class Main {
 
@@ -8,7 +8,7 @@ public class Main {
         Game game = new Game(3);
         //todo:  call game.setup() - a method you will add to the Game class that
         // a. loads or prompts for gamedata,
-        // b. creates the Player objects
+        // b. creates the model.Player objects
         // (reuse the code beneath)
 
         game.setup();
