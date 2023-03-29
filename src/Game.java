@@ -24,16 +24,10 @@ public class Game {
         this.maxPlayers = maxPlayers;
     }
 
-
-    //todo: this method is no longer needed. Remove
-    public static int getTotalBanks(){
-        return 1;
-    }
-
-    public void registerPlayer(String name){
+    public void registerPlayer(String name, int amount){
         Player player = new Player(name);
         players.add(player);
-
+        player.receiveAmount(amount);
 
     }
 
@@ -42,7 +36,7 @@ public class Game {
         int count = 0;
         while (count < maxPlayers  ) {
             String name = ui.getInput("Skriv spillerens navn: ");
-            registerPlayer(name);
+            registerPlayer(name,30000);
             count++;
         }
         endGame();
@@ -82,6 +76,6 @@ public class Game {
 
         return players;
     }
-    //todo: add endGame method
+
 
 }
