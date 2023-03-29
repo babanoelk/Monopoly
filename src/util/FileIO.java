@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *
+ * @param <T> where T is the Class FileIO can save
+ */
 public class FileIO<T extends ISaveable> {
     File file;
     Scanner scan;
