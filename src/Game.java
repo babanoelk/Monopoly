@@ -1,10 +1,13 @@
+import model.Player;
+import util.FileIO;
+import util.TextUI;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
 //      - Add the setup method:
 //      a. loads or prompts for gamedata,
-//      b. creates the Player objects
+//      b. creates the model.Player objects
 //      (reuse the code from the main method)
 
 public class Game {
@@ -65,8 +68,8 @@ public class Game {
 
         }else {
 
-            while (count < this.customerLimit) {
-                String name = ui.getInput("Skriv kundens navn: ");
+            while (count < this.maxPlayers) {
+                String name = ui.getInput("Skriv spillernavn navn: ");
                 Player p = this.registerPlayer(name);
                 p.receiveAmount(30000);
                 count++;
@@ -79,5 +82,8 @@ public class Game {
 
     private void endGame() {
 
+        //Testcode
+        //todo: add this line to the endGame method in class Game
+        io.saveData("src/data.csv", this.getPlayers());
     }
 }
