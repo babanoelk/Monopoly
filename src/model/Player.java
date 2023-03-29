@@ -14,6 +14,10 @@ public class Player {
         counter++;
     }
 
+    public static void resetCounter() {
+        counter = 1;
+    }
+
     public int getBalance(){
         return account.getBalance();
     }

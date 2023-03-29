@@ -7,6 +7,7 @@ public class Game {
     public int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
     FileIO fileIO = new FileIO();
+    TextUI ui = new TextUI();
 
     public Game(int maxPlayers){
         this.maxPlayers = maxPlayers;
@@ -25,7 +26,6 @@ public class Game {
     }
 
     public void setup() {
-        TextUI ui = new TextUI();
         ArrayList<String> data = fileIO.readGameData("src/data.csv");
 
         if(data.size()>0) {
