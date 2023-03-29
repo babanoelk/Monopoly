@@ -1,7 +1,9 @@
 package model;
 
 
-public class Player {
+import util.ISaveable;
+
+public class Player implements ISaveable {
     private Account account;
     private String name;
     private int id;

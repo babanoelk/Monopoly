@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Game {
     public int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
-    FileIO fileIO = new FileIO();
+    FileIO<Player> fileIO = new FileIO();
     TextUI ui = new TextUI();
 
     public Game(int maxPlayers){
