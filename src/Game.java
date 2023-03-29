@@ -58,19 +58,6 @@ public class Game {
 
         io.saveData("src/data.csv", players);
 
-        /*try {
-        FileWriter filewriter = new FileWriter("src/data.csv");
-
-            for (model.Player p : players) {
-                filewriter.write(p.getName() + "," + p.getAccount().getBalance() + "\n");
-            }
-            filewriter.close();
-        }
-        catch (IOException e){
-            System.out.println("not found");
-        }*/
-
-
     }
 
     public void displayPlayers(){
