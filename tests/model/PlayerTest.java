@@ -63,6 +63,7 @@ class PlayerTest {
         int newAmmout = p.receiveAmount(addAmount);
 
         assertEquals(b+addAmount, newAmmout);
+
     }
 
     @Test
@@ -78,11 +79,9 @@ class PlayerTest {
     @Test
     void testToString() {
         Player p = players.get(0);
-        String test = p.getName()+": "+ p.getBalance();
+        String test = p.getName()+": "+p.getBalance();
 
         assertEquals(test, p.toString());
-
-
     }
-    //return getName()+ ": "+ this.account.getBalance();
+
 }
