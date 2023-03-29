@@ -35,12 +35,15 @@ class PlayerTest {
 
     @Test
     void receivePositiveAmount() {
+        //Arrange
         Player p = players.get(0);
         int b = p.getBalance();
         int addAmount = 1000;
 
+        //Act
         int newAmmout = p.receiveAmount(addAmount);
 
+        //Assert
         assertEquals(b+addAmount, newAmmout);
     }
     @Test
