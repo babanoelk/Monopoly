@@ -19,16 +19,17 @@ public class Player {
     }
 
     public int receiveAmount(int i) {
-
         this.account.updateBalance(i);
         return this.account.getBalance();
     }
 
     public int getId() {
+
         return id;
     }
 
     public String getName(){
+
         return this.name;
     }
     public String toString(){

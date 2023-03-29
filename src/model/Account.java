@@ -13,7 +13,6 @@ public class Account {
     }
 
 
-
     public void updateBalance(int amount){
         this.balance += amount;
     }
