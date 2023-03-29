@@ -1,3 +1,7 @@
+import model.Player;
+import util.FileIO;
+import util.TextUI;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -5,7 +9,7 @@ import java.util.ArrayList;
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
 //      - Add the setup method:
 //      a. loads or prompts for gamedata,
-//      b. creates the Player objects
+//      b. creates the model.Player objects
 //      (reuse the code from the main method)
 
 public class Game {
@@ -54,7 +58,7 @@ public class Game {
                 writer.write("name, balance \n");
 
                 for (Player c: players) {
-                    writer.write(c.getName()+","+c.getAccount().getBalance()+"\n");
+                    writer.write(c.getName()+","+c.getBalance()+"\n");
                 }
 
 
@@ -68,7 +72,7 @@ public class Game {
             }
 
         }
-    
+
 
 
     public void displayPlayers(){
