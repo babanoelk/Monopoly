@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import model.Player;
 
 public class FileIO<T extends ISaveable> {
     File file;
