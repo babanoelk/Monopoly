@@ -8,7 +8,8 @@ public class Account {
         return balance;
     }
 
-    void setBalance(int amount){
+    public void setBalance(int amount){
+
         this.balance = amount;
     }
 

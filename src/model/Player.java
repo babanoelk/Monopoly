@@ -17,13 +17,17 @@ public class Player {
         return this.account;
     }
 
-    public int receiveAmount(int i){
+    public void receiveAmount(int i){
         this.account.updateBalance(i);
-        return this.account.getBalance();
     }
 
 
-
+    public int getId() {
+        return id;
+    }
+    public int getBalance(){
+        return this.account.getBalance();
+    }
 
     public String getName(){
         return this.name;
