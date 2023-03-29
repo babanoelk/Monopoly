@@ -10,14 +10,8 @@ public class Main {
         // (reuse the code beneath)
         game.setup();
 
-
-
-
-
-        //Testcode
         game.displayPlayers();
         game.endGame();
-
 
     }
 }
