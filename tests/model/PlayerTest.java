@@ -31,11 +31,7 @@ class PlayerTest {
     void receiveAmount() {
         int b = players.get(0).getBalance();
         int addAmount = 1000;
-
         assertEquals(b+addAmount, players.get(0).receiveAmount(addAmount));
-
-
-
     }
 
     @Test
