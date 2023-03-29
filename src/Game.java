@@ -3,9 +3,6 @@ import model.Player;
 import util.FileIO;
 import util.TextUI;
 
-
-
-
 import java.util.ArrayList;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
@@ -15,7 +12,7 @@ import java.util.ArrayList;
 //      (reuse the code from the main method)
 
 public class Game {
-    public int maxPlayers;
+    private int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
 
     private TextUI ui;
@@ -32,10 +29,10 @@ public class Game {
     public static int getTotalBanks(){
         return 1;
     }
-    public void registerPlayer(String name, int amount){
+
+    public void registerPlayer(String name){
         Player player = new Player(name);
         players.add(player);
-        player.getAccount().setBalance(amount);
 
 
     }
@@ -45,11 +42,9 @@ public class Game {
         int count = 0;
         while (count < maxPlayers  ) {
             String name = ui.getInput("Skriv spillerens navn: ");
-            int amount = 30000;
-            registerPlayer(name, amount);
+            registerPlayer(name);
             count++;
         }
-
         endGame();
     }
 

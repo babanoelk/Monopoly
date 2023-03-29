@@ -15,11 +15,6 @@ public class Player {
         counter++;
     }
 
-    public Account getAccount(){
-
-        return this.account;
-    }
-
     public int receiveAmount(int i){
         this.account.updateBalance(i);
         return this.account.getBalance();
@@ -39,7 +34,5 @@ public class Player {
     public int getBalance(){
         return account.getBalance();
     }
-
-
 
 }
