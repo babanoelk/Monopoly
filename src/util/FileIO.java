@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import model.Player;
 
-public class FileIO {
+public class FileIO<T extends ISaveable> {
     File file;
     Scanner scan;
 
@@ -36,13 +36,13 @@ public class FileIO {
     }
 
 
-    public void saveData(String path, ArrayList<Player> players){
+    public void saveData(String path, ArrayList<T> list){
         FileWriter writer = null;
         try {
             writer = new FileWriter(path);
             writer.write("name, balance \n");
-            for (Player c: players) {
-                writer.write(c.getName()+","+c.getBalance()+"\n");
+            for (T t: list) {
+                writer.write(t.getName()+","+t.getBalance()+"\n");
             }
             writer.close();
 
