@@ -4,12 +4,6 @@ import util.FileIO;
 import util.TextUI;
 
 import java.util.ArrayList;
-//Todo: - Rename class to Game,
-//      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
-//      - Add the setup method:
-//      a. loads or prompts for gamedata,
-//      b. creates the model.Player objects
-//      (reuse the code from the main method)
 
 public class Game {
     private int maxPlayers;
@@ -34,10 +28,26 @@ public class Game {
     public void setup(){
         ui = new TextUI();
         int count = 0;
-        while (count < maxPlayers  ) {
-            String name = ui.getInput("Skriv spillerens navn: ");
-            registerPlayer(name,30000);
-            count++;
+
+        io = new FileIO();
+        ArrayList<String> data = io.readGameData("src/data.csv");
+
+        if(data.size()>0) {
+
+            for (String s : data) {
+                String[] line = s.split(",");
+                String name = line[0];
+                int balance = Integer.parseInt(line[1].trim());
+                this.registerPlayer(name, balance);
+            }
+        }else {
+
+            while (count < maxPlayers) {
+                String name = ui.getInput("Skriv spillerens navn: ");
+                registerPlayer(name, 30000);
+                count++;
+
+            }
         }
         endGame();
     }
