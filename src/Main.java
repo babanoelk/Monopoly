@@ -16,7 +16,7 @@ public class Main {
 
         //Testcode
         game.displayPlayers();
-        //todo: add this line to the endGame method in class Game
+        game.endGame();
 
 
     }
