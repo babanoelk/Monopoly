@@ -13,6 +13,11 @@ public class Game {
         this.maxPlayers = maxPlayers;
     }
 
+    /**
+     * Register a new player with a name and amount
+     * @param name name of the player
+     * @param amount the starting amount on the players account
+     */
     public void registerPlayer(String name, int amount) {
         Player player = new Player(name);
         player.receiveAmount(amount);
