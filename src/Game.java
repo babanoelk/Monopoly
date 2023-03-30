@@ -42,7 +42,6 @@ public class Game {
 
         return players;
     }
-    //todo: add endGame method
 
     public void setup() {
 
@@ -66,7 +65,18 @@ public class Game {
         }else {
 
             while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn: ");
+                String name = ui.getInput("Skriv spillernavn navn eller Q for at afslutte dialog: ");
+                //
+                if(name.equalsIgnoreCase("q")){
+                    if(players.size()>1) {
+                        break;
+                    }else{
+                       ui.displayMessage("It takes two to monopolize");
+                       players = new ArrayList<>();
+                       this.setup();
+                    }
+                }
+
                 Player p = this.registerPlayer(name);
                 p.receiveAmount(30000);
                 count++;
