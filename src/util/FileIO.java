@@ -1,3 +1,6 @@
+package util;
+
+import model.Player;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -25,7 +28,7 @@ public class FileIO {
                 data.add(line);
             }
         } catch (FileNotFoundException e) {
-             System.out.println("The file was not found");
+            System.out.println("The file was not found");
 
         }
 
@@ -33,23 +36,22 @@ public class FileIO {
     }
 
 
-    public void saveData(String path, ArrayList<Customer> customers){
+    public void saveData(String path, ArrayList<Player> players) {
         FileWriter writer = null;
         try {
             writer = new FileWriter(path);
 
             writer.write("name, balance \n");
 
-            for (Customer c: customers) {
-                writer.write(c.getName()+","+c.getAccount().getBalance()+"\n");
+            for (Player p : players) {
+                writer.write(p.getName() + "," + p.getBalance() + "\n");
             }
 
 
             writer.close();
 
 
-
-        }catch(IOException e){
+        } catch (IOException e) {
 
 
         }
