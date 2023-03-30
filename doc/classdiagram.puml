@@ -41,7 +41,7 @@ Game : - int maxPlayers
 Game : - TextUI ui
 Game : - FileIO io
 Game : - Player currentplayer
-Game : + Game(int maxPlayers)
+Game : + Game(int maxPlayers, int minPlayers)
 Game : - void registerPlayer(String name, int amount)
 Game : + void setup()
 Game : - void runPlayerSetupDialog();
