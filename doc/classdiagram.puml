@@ -50,6 +50,7 @@ Game : + ArrayList<Player> getPlayers()
 
 TextUI : + String getInput(String msg)
 TextUI : - Scanner scanner
+TextUI : + void displayMessage(String msg)
 
 FileIO : - Scanner scanner
 FileIO : - File file
