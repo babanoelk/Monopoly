@@ -12,86 +12,122 @@ import java.util.ArrayList;
 
 public class Game {
     private int maxPlayers;
+    private int minPlayers;
     private ArrayList<Player> players = new ArrayList<>();
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
+    private Player currentPlayer;
 
-    public Game(int maxPlayers) {
 
+    public Game(int maxPlayers, int minPlayers) {
         this.maxPlayers = maxPlayers;
     }
 
-    public Player registerPlayer(String name) {
+
+//    OVERSÆTTER INPUT DATA TIL OBJEKTER
+    private Player registerPlayer(String name) {
         Player p = new Player(name);
         players.add(p);
         return p;
     }
 
-    public void displayPlayers() {
+    private void displayPlayers() {
+        String s = "";
         for (Player p : players) {
-            System.out.println(p);
+            s += p + "\n";
         }
+        ui.displayMessage(s);
     }
 
-    public Player getPlayer(int i) {
-
+    private Player getPlayer(int i) {
         return players.get(i);
     }
 
-    public ArrayList<Player> getPlayers() {
-
+    private ArrayList<Player> getPlayers() {
         return players;
     }
 
     public void setup() {
 
-        int count = 0;
-        ArrayList<String> data = io.readGameData("src/_data.csv");
+        ArrayList<String> data = io.readGameData("src/data.csv");
 
-        if(data.size()>0) {
+        if (data.size() > 0) {
+// THERE IS DATA
+            if (ui.getInput("Fortsætte gemt spil? Y/N").equalsIgnoreCase("Y")) {
 
-// OVERSÆT FIL INPUT DATA TIL OBJEKTER
+        // USE SAVED DATA TO CREATE PLAYER OBJECTS
 
-            for (String s : data) {
-                String[] line = s.split(",");
-                String name = line[0];
-                int balance = Integer.parseInt(line[1].trim());
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(balance);
-            }
-
-// OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
-
-        }else {
-
-            while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn eller Q for at afslutte dialog: ");
-                //
-                if(name.equalsIgnoreCase("q")){
-                    if(players.size()>1) {
-                        break;
-                    }else{
-                       ui.displayMessage("It takes two to monopolize");
-                       players = new ArrayList<>();
-                       this.setup();
-                    }
+                for (String s : data) {
+                    String[] line = s.split(",");
+                    String name = line[0];
+                    int balance = Integer.parseInt(line[1].trim());
+                    Player p = this.registerPlayer(name);
+                    p.receiveAmount(balance);
                 }
+                displayPlayers();
+                runGameLoop();
 
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(30000);
-                count++;
+
+            } else {
+                runPlayerSetupDialog();
             }
+
+
+// NO SAVED GAME DATA - RUN DIALOG AND CREATE PLAYER OBJECTS
+
+        } else {
+            runPlayerSetupDialog();
         }
 
-        displayPlayers();
+
         endGame();
 
     }
 
-    private void endGame() {
+    private void runPlayerSetupDialog() {
+        int count = 0;
+        while (count < this.maxPlayers) {
+            String name = ui.getInput("Skriv spillernavn navn eller Q for at afslutte dialog: ");
+            //
+            if (name.equalsIgnoreCase("q")) {
+                if (players.size() > minPlayers) {
+                    break;
+                } else {
+                    ui.displayMessage("It takes two to monopolize");
+                    players = new ArrayList<>();
+                    this.runPlayerSetupDialog();
+                }
+            }
 
-        //Testcode
-        //todo: add this line to the endGame method in class Game
+            Player p = this.registerPlayer(name);
+            p.receiveAmount(30000);
+            count++;
+        }
+    }
+    public void runGameLoop(){
+
+        String input = "Y";
+        int count = 0;
+
+        while(input.equalsIgnoreCase("Y")) {
+
+            currentPlayer = players.get(count);
+            count++;
+            ui.displayMessage("Det er "+currentPlayer.getName()+"'s tur");
+            throwAndMove();
+            input = ui.getInput("Fortsæt ? Y/N");
+            if(count == players.size()){
+                count = 0;
+            }
+        }
+        endGame();
+
+    }
+
+    private void throwAndMove() {
+    }
+
+    private void endGame() {
         io.saveData("src/data.csv", this.getPlayers());
     }
 }
