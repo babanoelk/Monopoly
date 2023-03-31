@@ -50,19 +50,28 @@ public class Game {
     public void setup() {
 
         int count = 0;
-        ArrayList<String> data = io.readGameData("src/_data.csv");
+        ArrayList<String> data = io.readGameData("src/data.csv");
 
         if(data.size()>0) {
 
 // OVERSÆT FIL INPUT DATA TIL OBJEKTER
 
-            for (String s : data) {
-                String[] line = s.split(",");
-                String name = line[0];
-                int balance = Integer.parseInt(line[1].trim());
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(balance);
+            ui.displayMessage("Gemt spil fundet");
+            if(ui.getInput("Fortsæt gemt spil= Y/N").equalsIgnoreCase("Y")){
+                ui.displayMessage("Henter gemt spil...");
+                for (String s : data) {
+                    String[] line = s.split(",");
+                    String name = line[0];
+                    int balance = Integer.parseInt(line[1].trim());
+                    Player p = this.registerPlayer(name);
+                    p.receiveAmount(balance);
+                }
+                ui.displayMessage("Gemt spil fundet med disse spillere:");
+            } else {
+                runPlayerSetupDialog();
             }
+
+
 
 // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
 
@@ -81,11 +90,12 @@ public class Game {
         int count = 0;
         while (count < this.maxPlayers) {
             String name = ui.getInput("Skriv spillernavn navn: (Tryk 'Q' for at afbryde) ");
-            if(name.equalsIgnoreCase("Q") && players.size() >= 2){
+            if(name.equalsIgnoreCase("Q") && players.size() > 1){
                 break;
             }else if(name.equalsIgnoreCase("Q")) {
                 ui.displayMessage("Der kræves mindst 2 spillere for, at starte spillet! Der var kun tilføjet: " + players.size());
-                runPlayerSetupDialog();
+                displayPlayers();
+                continue;
             }
             Player p = this.registerPlayer(name);
             p.receiveAmount(30000);
