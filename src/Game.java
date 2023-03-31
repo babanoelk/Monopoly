@@ -3,6 +3,7 @@ import util.FileIO;
 import util.TextUI;
 
 import java.util.ArrayList;
+import java.util.Collections;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
 //      - Add the setup method:
@@ -46,7 +47,6 @@ public class Game {
 
     public void setup() {
 
-        int count = 0;
         ArrayList<String> data = io.readGameData("src/_data.csv");
 
         if(data.size()>0) {
@@ -64,17 +64,7 @@ public class Game {
 // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
 
         }else {
-
-            while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn eller tryk q og enter for at stoppe. ");
-                if(name == "break"){
-                    break;
-                } else {
-                    Player p = this.registerPlayer(name);
-                    p.receiveAmount(30000);
-                    count++;
-                }
-            }
+            runPlayerSetupDialog();
         }
 
         displayPlayers();
@@ -87,5 +77,23 @@ public class Game {
         //Testcode
         //todo: add this line to the endGame method in class Game
         io.saveData("src/data.csv", this.getPlayers());
+    }
+
+    private void runPlayerSetupDialog() {
+        int count = 0;
+        while (count < this.maxPlayers) {
+            String name = ui.getInput("Skriv spillernavn eller q for at slutte tilføjelse af spillere.");
+            //// Check if q, to quit initialisation
+            if (name.equalsIgnoreCase("q")) {
+                if (count > 1) {
+                    break;
+                }
+            } else {
+                Player p = this.registerPlayer(name);
+                p.receiveAmount(30000);
+                count++;
+            }
+        }
+        Collections.shuffle(players);
     }
 }

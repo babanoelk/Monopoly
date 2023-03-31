@@ -13,11 +13,11 @@ public class TextUI {
     public String getInput(String msg){
          System.out.println(msg);
          String input = scan.nextLine();
-         if(input.equals("q") || input.equals("Q")){
-             return "break";
-         } else {
-             return input;
-         }
+         return input;
+     }
 
-    }
+     public void ShowMessage(String msg){
+         JOptionPane.showMessageDialog(null, msg);
+     }
 }
+
