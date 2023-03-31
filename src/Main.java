@@ -7,6 +7,7 @@ public class Main {
         Game game = new Game(6);
         game.setup();
 
+
         //todo:  call game.setup() - a method you will add to the Game class that
         // a. loads or prompts for gamedata,
         // b. creates the model.Player objects

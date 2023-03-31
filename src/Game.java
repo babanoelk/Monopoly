@@ -47,22 +47,23 @@ public class Game {
         return players;
     }
 
-    public void runGameLoop() {
+    private void runGameLoop() {
         String input = "Y";
         int counter = 0;
         while(!ui.getInput("").equalsIgnoreCase(input)){
             currentPlayer = players.get(counter);
-            ui.displayMessage("Det er " + currentPlayer + " tur");
+            ui.displayMessage("Det er " + currentPlayer.getName() + " tur");
             throwAndMove();
-            ui.displayMessage("Vil du forsætte?");
+            ui.getInput("Vil du forsætte? Y/N");
             counter += 1;
         }
+        displayPlayers();
         counter = 0;
     }
-    public void throwAndMove() {
+    private void throwAndMove() {
 
     }
-    public void landAndAct() {
+    private void landAndAct() {
         
     }
 
@@ -104,6 +105,7 @@ public class Game {
         }
 
         displayPlayers();
+        runGameLoop();
         endGame();
 
     }
