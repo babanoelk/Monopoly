@@ -16,6 +16,7 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
+    private Player currentPlayer;
 
     public Game(int maxPlayers) {
 
@@ -45,6 +46,18 @@ public class Game {
 
         return players;
     }
+
+    public void runGameLoop() {
+
+    }
+    public void throwAndMove() {
+
+    }
+    public void landAndAct() {
+        
+    }
+
+
     //todo: add endGame method
 
     public void setup() {
@@ -75,7 +88,7 @@ public class Game {
 
 // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
 
-        }else {
+        } else {
 
           runPlayerSetupDialog();
 
