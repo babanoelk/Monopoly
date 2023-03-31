@@ -48,7 +48,10 @@ public class Game {
     }
 
     public void runGameLoop() {
-
+        String input = "Y";
+        while(!ui.getInput("Vil du fortsætte?").equalsIgnoreCase(input)){
+            
+        }
     }
     public void throwAndMove() {
 
