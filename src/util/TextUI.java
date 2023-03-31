@@ -15,4 +15,7 @@ public class TextUI {
          String input = scan.nextLine();
          return input;
     }
+    public void displayMessage(String msg){
+        System.out.println(msg);
+    }
 }

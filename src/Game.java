@@ -3,6 +3,7 @@ import util.FileIO;
 import util.TextUI;
 
 import java.util.ArrayList;
+import java.util.Collections;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
 //      - Add the setup method:
@@ -28,9 +29,11 @@ public class Game {
     }
 
     public void displayPlayers() {
+        StringBuilder message = new StringBuilder();
         for (Player p : players) {
-            System.out.println(p);
+            message.append(p.toString());  // <-- er det samme som: "message += p.toString()+"\n";"
         }
+        ui.displayMessage(message.toString());
     }
 
     public Player getPlayer(int i) {
@@ -45,14 +48,10 @@ public class Game {
     //todo: add endGame method
 
     public void setup() {
-
-        int count = 0;
         ArrayList<String> data = io.readGameData("src/_data.csv");
 
         if(data.size()>0) {
-
-// OVERSÆT FIL INPUT DATA TIL OBJEKTER
-
+            // OVERSÆT FIL INPUT DATA TIL OBJEKTER
             for (String s : data) {
                 String[] line = s.split(",");
                 String name = line[0];
@@ -60,24 +59,36 @@ public class Game {
                 Player p = this.registerPlayer(name);
                 p.receiveAmount(balance);
             }
-
-// OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
-
-        }else {
-
-            while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn: ");
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(30000);
-                count++;
-            }
+        // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
+        } else {
+            runPlayerSetupDialog();
         }
 
+        Collections.shuffle(players);
         displayPlayers();
         endGame();
 
     }
 
+    private void runPlayerSetupDialog(){
+
+        int count = 0;
+
+        while (count < this.maxPlayers) {
+            String name = ui.getInput("Skriv spillernavn navn eller tast Q for at afslutte spillet ");
+            if(name.equalsIgnoreCase("Q")){
+                if(players.size() < 2){
+                    ui.displayMessage("You need more than 2 players to play the game");
+                    continue;
+                }
+                ui.displayMessage("Registration of players done");
+                break;
+            }
+            Player p = this.registerPlayer(name);
+            p.receiveAmount(30000);
+            count++;
+        }
+    }
     private void endGame() {
 
         //Testcode
