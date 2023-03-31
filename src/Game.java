@@ -1,6 +1,7 @@
 import model.*;
 import util.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class Game {
@@ -16,7 +17,6 @@ public class Game {
     /**
      * Register a new player with a name and amount
      * @param name name of the player
-     * @param amount the starting amount on the players account
      */
     public Player registerPlayer(String name) {
         Player p = new Player(name);
