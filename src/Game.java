@@ -4,12 +4,6 @@ import util.TextUI;
 
 import java.util.ArrayList;
 import java.util.Collections;
-//Todo: - Rename class to Game,
-//      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
-//      - Add the setup method:
-//      a. loads or prompts for gamedata,
-//      b. creates the model.Player objects
-//      (reuse the code from the main method)
 
 public class Game {
     private int maxPlayers;
@@ -43,7 +37,7 @@ public class Game {
 
         return players;
     }
-    //todo: add endGame method
+
 
     public void setup() {
 
@@ -74,8 +68,6 @@ public class Game {
 
     private void endGame() {
 
-        //Testcode
-        //todo: add this line to the endGame method in class Game
         io.saveData("src/data.csv", this.getPlayers());
     }
 
