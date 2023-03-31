@@ -9,6 +9,7 @@ public class Game {
     private int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
     private TextUI ui = new TextUI();
+   // private UI ui = new TextUI();
     private FileIO io = new FileIO();
 
     public Game(int maxPlayers) {
@@ -23,9 +24,14 @@ public class Game {
     }
 
     public void displayPlayers() {
+        String output = "";
+
         for (Player p : players) {
-            System.out.println(p);
+            //System.out.println(p);
+            output += p+"\n";
         }
+
+        ui.showMessage(output);
     }
 
     public Player getPlayer(int i) {
@@ -46,19 +52,23 @@ public class Game {
         if(data.size()>0) {
 
 // OVERSÆT FIL INPUT DATA TIL OBJEKTER
+            if (ui.getInput("Fortsætte gemt spil? Y/N").equalsIgnoreCase("Y"))   {
 
-            for (String s : data) {
-                String[] line = s.split(",");
-                String name = line[0];
-                int balance = Integer.parseInt(line[1].trim());
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(balance);
-            }
+                for (String s : data) {
+                    String[] line = s.split(",");
+                    String name = line[0];
+                    int balance = Integer.parseInt(line[1].trim());
+                    Player p = this.registerPlayer(name);
+                    p.receiveAmount(balance);
+                }
+            }else{
+                    runPlayerSetupDialog();
+        }
 
 // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
 
         }else {
-            runPlayerSetupDialog();
+                     runPlayerSetupDialog();
         }
 
         displayPlayers();
@@ -79,6 +89,11 @@ public class Game {
             if (name.equalsIgnoreCase("q")) {
                 if (count > 1) {
                     break;
+                }else{
+                    ui.showMessage("It take two to monopolize.\n Current player is:");
+                    displayPlayers();
+
+
                 }
             } else {
                 Player p = this.registerPlayer(name);
