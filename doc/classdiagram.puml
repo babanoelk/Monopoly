@@ -2,6 +2,8 @@
 'https://plantuml.com/class-diagram
 !pragma layout smetana
 
+!pragma layout smetana
+
 class Main
 class Game
 
@@ -41,16 +43,21 @@ Game : - ArrayList<Player> players
 Game : - int maxPlayers
 Game : - TextUI ui
 Game : - FileIO io
-Game : + Game(int maxPlayers)
-Game : + void registerPlayer(String name, int amount)
+Game : - Player currentplayer
+Game : + Game(int maxPlayers, int minPlayers)
+Game : - void registerPlayer(String name, int amount)
 Game : + void setup()
+Game : - void runPlayerSetupDialog();
+Game : - void runGameLoop()
+Game : - void throwAndMove()
 Game : - void endGame()
-Game : + void displayPlayers()
-Game : + Player getPlayer(int i)
-Game : + ArrayList<Player> getPlayers()
+Game : - void displayPlayers()
+Game : - Player getPlayer(int i)
+Game : - ArrayList<Player> getPlayers()
 
 TextUI : + String getInput(String msg)
 TextUI : - Scanner scanner
+TextUI : + void displayMessage(String msg)
 
 FileIO : - Scanner scanner
 FileIO : - File file

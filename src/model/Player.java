@@ -9,9 +9,9 @@ public class Player implements ISaveable {
     private int id;
     private static int counter = 1;
 
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
-        this.id  = counter;
+        this.id = counter;
         this.account = new Account();
         counter++;
     }
@@ -20,8 +20,8 @@ public class Player implements ISaveable {
         counter = 1;
     }
 
-    public int getBalance(){
-        return account.getBalance();
+    public Account geAccount(){
+        return account;
     }
 
     public int receiveAmount(int i) {
@@ -29,17 +29,18 @@ public class Player implements ISaveable {
         return this.account.getBalance();
     }
 
-    public int getId() {
 
-        return id;
-    }
-
-    public String getName(){
-
+    public String getName() {
         return this.name;
     }
-    public String toString(){
-        return getName()+ ": "+ this.account.getBalance();
+
+    public String toString() {
+        return getName() + ": " + this.account.getBalance();
+    }
+
+    public int getBalance() {
+
+        return getAccount().getBalance();
     }
 
 

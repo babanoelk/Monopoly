@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 
 public class Game {
-    public int maxPlayers;
+    private int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
-    FileIO<Player> fileIO = new FileIO();
-    TextUI ui = new TextUI();
+    private TextUI ui = new TextUI();
+    private FileIO<Player> io = new FileIO();
 
     public Game(int maxPlayers){
         this.maxPlayers = maxPlayers;
@@ -18,49 +18,71 @@ public class Game {
      * @param name name of the player
      * @param amount the starting amount on the players account
      */
-    public void registerPlayer(String name, int amount) {
-        Player player = new Player(name);
-        player.receiveAmount(amount);
-        players.add(player);
+    public Player registerPlayer(String name) {
+        Player p = new Player(name);
+        players.add(p);
+        return p;
     }
 
-    public void displayPlayers(){
-        for (Player c: players) {
-            System.out.println(c);
+    public void displayPlayers() {
+        String message = "";
+        for (Player p : players) {
+            message+=p.toString();
         }
+        ui.displayMessage(message);
     }
+
+    public Player getPlayer(int i) {
+        return players.get(i);
+    }
+ 
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }  
 
     public void setup() {
-        ArrayList<String> data = fileIO.readGameData("src/data.csv");
+        ArrayList<String> data = io.readGameData("src/_data.csv");
 
         if(data.size()>0) {
         // OVERSÆT FIL INPUT DATA TIL OBJEKTER
             for (String s : data) {
                 String[] line = s.split(",");
                 String name = line[0];
-                int startBalance = Integer.parseInt(line[1].trim());
-                registerPlayer(name, startBalance);
+                int balance = Integer.parseInt(line[1].trim());
+                Player p = this.registerPlayer(name);
+                p.receiveAmount(balance);
             }
         // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
-        }else {
-            int count = 0;
-            while (count < maxPlayers) {
-                String name = ui.getInput("Skriv kundens navn: ");
-                registerPlayer(name,30000);
-                count++;
+        } else {
+            runPlayerSetupDialog();
+        }
+        Collections.shuffle(players);
+        displayPlayers();
+        endGame();
+    }
+    private void runPlayerSetupDialog(){
+
+        int count = 0;
+
+        while (count < this.maxPlayers) {
+            String name = ui.getInput("Skriv spillernavn navn eller tast Q for at afslutte spillet ");
+            if(name.equalsIgnoreCase("Q")){
+                if(players.size() < 2){
+                    ui.displayMessage("You need more than 2 players to play the game");
+                    continue;
+                }
+                ui.displayMessage("Registration of players done");
+                break;
             }
+            Player p = this.registerPlayer(name);
+            p.receiveAmount(30000);
+            count++;
         }
     }
 
-    public Player getPlayer(int i) {
-       return players.get(i);
-    }
-
-    public ArrayList<Player> getPlayers(){
-        return players;
-    }
-
-    public void endGame(){
-        fileIO.saveData("src/data.csv", players);
+    private void endGame(){
+        //Testcode
+        //todo: add this line to the endGame method in class Game
+        io.saveData("src/data.csv", this.getPlayers());
     }
 }

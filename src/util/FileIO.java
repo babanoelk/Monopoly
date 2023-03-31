@@ -1,11 +1,14 @@
 package util;
 
+import model.Player;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.management.RuntimeErrorException;
 
 /**
  *
@@ -31,7 +34,7 @@ public class FileIO<T extends ISaveable> {
                 data.add(line);
             }
         } catch (FileNotFoundException e) {
-             System.out.println("The file was not found");
+            System.out.println("The file was not found");
 
         }
 
@@ -50,7 +53,7 @@ public class FileIO<T extends ISaveable> {
             writer.close();
 
         }catch(IOException e){
-
+            throw new RuntimeErrorException("saveData io Exeption not implementet");
 
         }
     }
