@@ -81,7 +81,7 @@ public class Game {
             if(name.equalsIgnoreCase("Q") && players.size() >= 2){
                 break;
             }else if(name.equalsIgnoreCase("Q")) {
-                System.out.println("Der kræves mindst 2 spillere for, at starte spillet! Der var kun tilføjet: "+ players.size());
+                ui.displayMessage("Der kræves mindst 2 spillere for, at starte spillet! Der var kun tilføjet: " + players.size());
                 runPlayerSetupDialog();
             }
             Player p = this.registerPlayer(name);
