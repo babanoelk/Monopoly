@@ -1,13 +1,13 @@
 package util;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class TextUI {
      Scanner scan;
 
 
      public TextUI (){
-
         scan = new Scanner(System.in);
      }
     public String getInput(String msg){
@@ -16,7 +16,7 @@ public class TextUI {
          return input;
      }
 
-     public void ShowMessage(String msg){
+     public void showMessage(String msg){
          JOptionPane.showMessageDialog(null, msg);
      }
 }

@@ -79,6 +79,8 @@ public class Game {
             if (name.equalsIgnoreCase("q")) {
                 if (count > 1) {
                     break;
+                } else {
+                    ui.showMessage("need 2 players you have " + count);
                 }
             } else {
                 Player p = this.registerPlayer(name);
