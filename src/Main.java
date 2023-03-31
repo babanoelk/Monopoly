@@ -6,7 +6,7 @@ public class Main {
 
         Game game = new Game(5);
 
-        game.setup();
+        game.runPlayerSetupDialog();
     }
 
 }

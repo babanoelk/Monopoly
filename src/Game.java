@@ -1,15 +1,17 @@
-import model.Account;
 import model.Player;
 import util.FileIO;
 import util.TextUI;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Game {
     private int maxPlayers;
     private ArrayList<Player> players = new ArrayList<>();
 
-    private TextUI ui;
+    private TextUI ui = new TextUI();
 
     private FileIO io;
 
@@ -25,8 +27,7 @@ public class Game {
 
     }
 
-    public void setup(){
-        ui = new TextUI();
+    public void runPlayerSetupDialog(){
         int count = 0;
 
         io = new FileIO();
@@ -43,11 +44,33 @@ public class Game {
         }else {
 
             while (count < maxPlayers) {
-                String name = ui.getInput("Skriv spillerens navn: ");
-                registerPlayer(name, 30000);
-                count++;
+                String name = ui.getInput("Skriv spillerens navn:" + "\n Tryk på Q for at afslutte" );
 
+                if (name.equalsIgnoreCase("q")) {
+                    if (players.size() < 2) {
+                        System.out.println("Minimum antal spillere ikke oprettet");
+                        runPlayerSetupDialog();
+                        return;
+                    } else {
+                        break;
+                    }
+                } else {
+                    registerPlayer(name, 30000);
+                    count++;
+                }
+                /*if(name.equalsIgnoreCase("q") && players.size()>= 2 ){
+                    break;
+                } else if (name.equalsIgnoreCase("q") && players.size() <= 2) {
+                        System.out.print("Minimum antal spillere ikke oprettet");
+                        setup();
+                }
+                else{
+                    registerPlayer(name, 30000);
+                    count++;
+                }*/
             }
+            Collections.shuffle(players);
+            displayPlayers();
         }
         endGame();
     }
@@ -62,8 +85,9 @@ public class Game {
 
     public void displayPlayers(){
         for (Player c: players) {
-            System.out.println(c);
+            ui.displayMessage(c.toString());
         }
+
     }
     public Player getPlayer(int i){
 
