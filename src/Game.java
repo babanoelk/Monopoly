@@ -11,6 +11,8 @@ public class Game {
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
 
+    Player currentplayer;
+
     public Game(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
@@ -81,4 +83,27 @@ public class Game {
         }
         Collections.shuffle(players);
     }
+
+
+
+    public void runGameLoop(String input){
+        while(!input.equalsIgnoreCase("y")){
+            System.out.println("it is "+ currentplayer + " turn");
+            System.out.println("continue Y/N?");
+            count+=1;
+        }
+    }
+
+
+    void throwAndMove(){
+
+    }
+
+    void landAndAct(){
+
+
+    }
+
+
+    int count = 0;
 }
