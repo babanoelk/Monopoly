@@ -12,7 +12,6 @@ public class Game {
     private FileIO io = new FileIO();
 
     public Game(int maxPlayers) {
-
         this.maxPlayers = maxPlayers;
     }
 
@@ -29,24 +28,19 @@ public class Game {
     }
 
     public Player getPlayer(int i) {
-
         return players.get(i);
     }
 
     public ArrayList<Player> getPlayers() {
-
         return players;
     }
 
 
     public void setup() {
+        ArrayList<String> data = io.readGameData("src/data.csv");
 
-        ArrayList<String> data = io.readGameData("src/_data.csv");
-
-        if(data.size()>0) {
-
+        if(data.size()>0 && ui.getInput("Continue last game? yes/no").equalsIgnoreCase("yes")) {
 // OVERSÆT FIL INPUT DATA TIL OBJEKTER
-
             for (String s : data) {
                 String[] line = s.split(",");
                 String name = line[0];
@@ -54,9 +48,7 @@ public class Game {
                 Player p = this.registerPlayer(name);
                 p.receiveAmount(balance);
             }
-
 // OVERSÆT BRUGER INPUT DATA TIL OBJEKTER
-
         }else {
             runPlayerSetupDialog();
         }
@@ -67,7 +59,6 @@ public class Game {
     }
 
     private void endGame() {
-
         io.saveData("src/data.csv", this.getPlayers());
     }
 
