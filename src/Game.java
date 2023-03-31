@@ -47,7 +47,7 @@ public class Game {
 
     public void setup() {
 
-        ArrayList<String> data = io.readGameData("src/_data.csv");
+        ArrayList<String> data = io.readGameData("src/data.csv");
 
         if(data.size()>0) {
 
