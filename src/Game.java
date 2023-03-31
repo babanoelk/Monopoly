@@ -3,6 +3,7 @@ import util.FileIO;
 import util.TextUI;
 
 import java.util.ArrayList;
+import java.util.Collections;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
 //      - Add the setup method:
@@ -28,8 +29,10 @@ public class Game {
     }
 
     public void displayPlayers() {
+        String output = "";
         for (Player p : players) {
-            System.out.println(p);
+            output = p+"\n";
+            ui.displayMessage(output);
         }
     }
 
@@ -88,6 +91,7 @@ public class Game {
             p.receiveAmount(30000);
             count++;
         }
+        Collections.shuffle(players);
     }
 
     private void endGame() {
