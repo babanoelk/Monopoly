@@ -49,9 +49,15 @@ public class Game {
 
     public void runGameLoop() {
         String input = "Y";
-        while(!ui.getInput("Vil du fortsætte?").equalsIgnoreCase(input)){
-            
+        int counter = 0;
+        while(!ui.getInput("").equalsIgnoreCase(input)){
+            currentPlayer = players.get(counter);
+            ui.displayMessage("Det er " + currentPlayer + " tur");
+            throwAndMove();
+            ui.displayMessage("Vil du forsætte?");
+            counter += 1;
         }
+        counter = 0;
     }
     public void throwAndMove() {
 
