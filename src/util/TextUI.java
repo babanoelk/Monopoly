@@ -13,6 +13,11 @@ public class TextUI {
     public String getInput(String msg){
          System.out.println(msg);
          String input = scan.nextLine();
-         return input;
+         if(input.equals("q") || input.equals("Q")){
+             return "break";
+         } else {
+             return input;
+         }
+
     }
 }

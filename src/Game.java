@@ -66,10 +66,14 @@ public class Game {
         }else {
 
             while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn: ");
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(30000);
-                count++;
+                String name = ui.getInput("Skriv spillernavn navn eller tryk q og enter for at stoppe. ");
+                if(name == "break"){
+                    break;
+                } else {
+                    Player p = this.registerPlayer(name);
+                    p.receiveAmount(30000);
+                    count++;
+                }
             }
         }
 
