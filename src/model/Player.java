@@ -35,6 +35,9 @@ public class Player {
 
         return getAccount().getBalance();
     }
+    public int getId(){
+        return id;
+    }
 
 
 }
