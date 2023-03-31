@@ -2,7 +2,9 @@ import model.Player;
 import util.FileIO;
 import util.TextUI;
 
+import javax.xml.soap.Text;
 import java.util.ArrayList;
+import java.util.Collections;
 //Todo: - Rename class to Game,
 //      - Change fields and methodnames so that it reflects precisely the Game class in the class diagram
 //      - Add the setup method:
@@ -28,9 +30,11 @@ public class Game {
     }
 
     public void displayPlayers() {
+        String msg = "";
         for (Player p : players) {
-            System.out.println(p);
+            msg += p + "\n";
         }
+        ui.displayMessage(msg);
     }
 
     public Player getPlayer(int i) {
@@ -44,7 +48,7 @@ public class Game {
     }
     //todo: add endGame method
 
-    public void setup() {
+    public void runPlayerSetupDialog() {
 
         int count = 0;
         ArrayList<String> data = io.readGameData("src/_data.csv");
@@ -66,13 +70,28 @@ public class Game {
         }else {
 
             while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn: ");
+                String name = ui.getInput("Skriv spillernavn navn eller skriv \"Q\" for at fortsætte: ");
+                if (name.equalsIgnoreCase("q")) {
+
+                    if(players.size() >= 2) {
+                        break;
+                    }
+                    else{
+                        System.out.println("Der skal registreres mindst 2 spillere før I kan spille");
+                        players.clear();
+
+                        runPlayerSetupDialog();
+                        return;
+                    }
+
+
+                }
                 Player p = this.registerPlayer(name);
                 p.receiveAmount(30000);
                 count++;
             }
         }
-
+        Collections.shuffle(players);
         displayPlayers();
         endGame();
 

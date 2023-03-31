@@ -1,0 +1,21 @@
+@startuml
+
+actor user as u
+
+  usecase "StartGame" as UCA1
+  usecase "RegisterPlayers" as UCA2
+  usecase "GameLoop" as UC1
+  usecase "LandOnField" as UC2
+  usecase "DoTransaction" as UC6
+ usecase "QuitGame" as UC7
+
+u --> (UCA1)
+(UCA1) --> (UCA2)
+(UCA2) --> (UC1)
+(UC1) --> (UC2)
+(UC2) --> (UC6)
+(UC6) --> (UC1)
+(UC1) --> (UC7)
+
+
+@enduml
