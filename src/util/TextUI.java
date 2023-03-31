@@ -1,13 +1,10 @@
+package util;
+
 import java.util.Scanner;
 
 public class TextUI {
-     Scanner scan;
+     private Scanner scan = new Scanner(System.in);
 
-
-     public TextUI (){
-
-        scan = new Scanner(System.in);
-     }
     public String getInput(String msg){
          System.out.println(msg);
          String input = scan.nextLine();
