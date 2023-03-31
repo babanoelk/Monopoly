@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="598ae212-4a52-4729-b500-cc92230eea17" name="Changes" comment="Lavet branch" />
+    <list default="true" id="598ae212-4a52-4729-b500-cc92230eea17" name="Changes" comment="Lavet branch">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/data.csv" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +99,7 @@
       <workItem from="1680073626920" duration="6779000" />
       <workItem from="1680085018504" duration="37000" />
       <workItem from="1680247892945" duration="3152000" />
-      <workItem from="1680251092404" duration="694000" />
+      <workItem from="1680251092404" duration="2114000" />
     </task>
     <servers />
   </component>

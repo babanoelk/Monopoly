@@ -65,17 +65,29 @@ public class Game {
 
         }else {
 
-            while (count < this.maxPlayers) {
-                String name = ui.getInput("Skriv spillernavn navn: ");
-                Player p = this.registerPlayer(name);
-                p.receiveAmount(30000);
-                count++;
-            }
+          runPlayerSetupDialog();
+
         }
 
         displayPlayers();
         endGame();
 
+    }
+
+    private void runPlayerSetupDialog() {
+        int count = 0;
+        while (count < this.maxPlayers) {
+            String name = ui.getInput("Skriv spillernavn navn: (Tryk 'Q' for at afbryde) ");
+            if(name.equalsIgnoreCase("Q") && players.size() >= 2){
+                break;
+            }else if(name.equalsIgnoreCase("Q")) {
+                System.out.println("Der kræves mindst 2 spillere for, at starte spillet! Der var kun tilføjet: "+ players.size());
+                runPlayerSetupDialog();
+            }
+            Player p = this.registerPlayer(name);
+            p.receiveAmount(30000);
+            count++;
+        }
     }
 
     private void endGame() {
