@@ -1,5 +1,6 @@
 package util;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 public class TextUI {
@@ -14,5 +15,12 @@ public class TextUI {
          System.out.println(msg);
          String input = scan.nextLine();
          return input;
-    }
+     }
+
+     public void showMessage(String msg){
+         System.out.println("**********************");
+         System.out.println(msg);
+         System.out.println("**********************");
+     }
 }
+

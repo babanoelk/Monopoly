@@ -47,7 +47,6 @@ public class FileIO {
                 writer.write(p.getName() + "," + p.getBalance() + "\n");
             }
 
-
             writer.close();
 
 
