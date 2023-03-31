@@ -16,7 +16,7 @@ public class TextUI {
          return input;
      }
 
-     public void ShowMessage(String msg){
+     public void showMessage(String msg){
          JOptionPane.showMessageDialog(null, msg);
      }
 }
