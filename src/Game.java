@@ -17,10 +17,39 @@ public class Game {
     private ArrayList<Player> players = new ArrayList<>();
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
+    private Player currentPlayer;
 
     public Game(int maxPlayers) {
 
         this.maxPlayers = maxPlayers;
+    }
+
+    private void runGameLoop(){
+
+        String input = "Y";
+        int count = 0;
+
+
+
+        while (input.equalsIgnoreCase("Y")) {
+            currentPlayer = players.get(count);
+            ui.displayMessage("Det er " + currentPlayer.getName() + "'s tur");
+            throwAndMove();
+            count++;
+            input = ui.getInput("Vil du gerne forsætte? Y/N");
+            if (count > players.size()-1) {
+                count = 0;
+            }
+        }
+
+    }
+
+    private void throwAndMove() {
+
+    }
+
+    private void landAndAct(){
+
     }
 
     public Player registerPlayer(String name) {
@@ -50,8 +79,8 @@ public class Game {
 
     public void runPlayerSetupDialog() {
 
-        int count = 0;
-        ArrayList<String> data = io.readGameData("src/_data.csv");
+
+        ArrayList<String> data = io.readGameData("src/data.csv");
 
         if(data.size()>0) {
 
@@ -90,9 +119,13 @@ public class Game {
                 p.receiveAmount(30000);
                 count++;
             }
+
+             */
+            runPlayerSetupDialog();
+            Collections.shuffle(players);
         }
-        Collections.shuffle(players);
         displayPlayers();
+        runGameLoop();
         endGame();
 
     }
