@@ -2,7 +2,6 @@ import model.Player;
 import util.FileIO;
 import util.TextUI;
 
-import javax.xml.soap.Text;
 import java.util.ArrayList;
 import java.util.Collections;
 //Todo: - Rename class to Game,
@@ -77,12 +76,13 @@ public class Game {
     }
     //todo: add endGame method
 
-    public void runPlayerSetupDialog() {
+    public void setup() {
 
 
         ArrayList<String> data = io.readGameData("src/data.csv");
 
-        if(data.size()>0) {
+
+        if(data.size() > 0 && ui.getInput("Forsætte gemt spil? Y/N").equalsIgnoreCase("Y")) {
 
 // OVERSÆT FIL INPUT DATA TIL OBJEKTER
 
@@ -98,7 +98,7 @@ public class Game {
 
         }else {
 
-            while (count < this.maxPlayers) {
+            /*while (count < this.maxPlayers) {
                 String name = ui.getInput("Skriv spillernavn navn eller skriv \"Q\" for at fortsætte: ");
                 if (name.equalsIgnoreCase("q")) {
 
@@ -109,7 +109,7 @@ public class Game {
                         System.out.println("Der skal registreres mindst 2 spillere før I kan spille");
                         players.clear();
 
-                        runPlayerSetupDialog();
+                        setup();
                         return;
                     }
 
@@ -130,6 +130,34 @@ public class Game {
 
     }
 
+    private void runPlayerSetupDialog() {
+
+        int count = 0;
+
+        while (count < this.maxPlayers) {
+            String name = ui.getInput("Skriv spillernavn navn eller skriv \"Q\" for at fortsætte: ");
+            if (name.equalsIgnoreCase("q")) {
+
+                if(players.size() >= 2) {
+                    break;
+                }
+                else{
+                    System.out.println("Der skal registreres mindst 2 spillere før I kan spille");
+                    players.clear();
+
+                    setup();
+                    return;
+                }
+
+
+            }
+            Player p = this.registerPlayer(name);
+            p.receiveAmount(30000);
+            count++;
+        }
+
+
+    }
     private void endGame() {
 
         //Testcode
