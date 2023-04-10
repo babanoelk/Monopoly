@@ -4,10 +4,10 @@ public class Main {
 
     public static void main(String[] args) {
         //todo: change to instantiation of Game class
-        Game game = new Game(6);
-        game.playerSetup();
-        game.boardSetup();
-        game.endGame();
+        Game game = new Game(6,2);
+        //game.playerSetup();
+       // game.boardSetup();
+       // game.endGame();
 
     }
 }
