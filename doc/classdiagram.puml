@@ -12,13 +12,20 @@ package "model"{
 class Player
 class Account
 }
+class Dice
+class Board
+class Field
+
 Main *-- Game
 Game *-- TextUI
 Game *-- FileIO
 Game *-- Player
 Player *-- Account
-
+Game *--Board
+Board *-- Dice
+Board *-- Field
 Main : + static void main(string [] args)
+
 
 Player : -int id
 Player  : -String name
@@ -29,6 +36,9 @@ Player  : +int getId()
 Player  : +String getName()
 Player  : +String toString()
 Player  : +int getBalance()
+Player  : +int updatePosition(int diceValue)
+Player  : +void recievePayment(int amount)
+
 
 Account : - int balance
 Account : + Account()
@@ -60,5 +70,18 @@ FileIO : - Scanner scanner
 FileIO : - File file
 FileIO : + readGameData(String path)
 FileIO : + void saveData(String path, ArrayList<Player> players)
+FileIO : + String[] readBoardData(String path)
+
+Field : + Field(ID, label, cost, income)
+Field : - String label
+Field : - int ID
+Field : - int cost
+Field : - int income
+
+Board : - Field[] fields
+Board : - CardDeck cardDeck
+Board : + Board(String [] fields, String [] cards])
+Board : - void createFields(String [] data)
+Board : + Field getField(int id)
 
 @enduml
