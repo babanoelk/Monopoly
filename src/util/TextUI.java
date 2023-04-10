@@ -11,8 +11,11 @@ public class TextUI {
 
         scan = new Scanner(System.in);
      }
-    public String getInput(String msg){
+     public void displayMessage(String msg){
          System.out.println(msg);
+     }
+    public String getInput(String msg){
+        displayMessage(msg);
          String input = scan.nextLine();
          return input;
      }
