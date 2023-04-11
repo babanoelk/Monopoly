@@ -8,7 +8,7 @@ public class CardDeck {
 
     public CardDeck(String[] carddata){
 
-        carddata = carddata;
+        this.cardData = carddata;
 
         cardData[0] = "Hej";
         cardData[1] = "Med";
