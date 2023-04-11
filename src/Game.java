@@ -20,9 +20,8 @@ public class Game {
 
 
     public Game(int maxPlayers, int minPlayers) {
-
-        this.maxPlayers = maxPlayers;
         this.minPlayers = minPlayers;
+        this.maxPlayers = maxPlayers;
     }
 
 
@@ -76,16 +75,15 @@ public class Game {
         } else {
             runPlayerSetupDialog();
         }
-      //  endGame();
+        endGame();
     }
 
+   public void boardSetup(){
 
-
- public void boardSetup(){
-
-
- }
-
+        String[] fielddata = io.readBoardData("fielddata.csv");
+        String[] carddata = io.readBoardData("carddata.csv");
+        this.board = new Board(fielddata, carddata);
+    }
 
 
 
