@@ -1,3 +1,4 @@
+import model.Field;
 import model.Player;
 import model.Board;
 import util.FileIO;
@@ -80,11 +81,13 @@ public class Game {
     }
 
   public void boardSetup(){
-
-        String[] fielddata = io.readBoardData("fielddata.csv");
-        String[] carddata = io.readBoardData("carddata.csv");
+        String[] fielddata = io.readBoardData("src/fielddata.csv", 40);
+        String[] carddata = io.readBoardData("src/carddata.csv",100);
         this.board = new Board(fielddata, carddata);
-    }
+        Field f = board.getFields(2);
+        System.out.println(f);
+        System.out.println(board.getNextCard());
+  }
 
     public void playerSetup(){
 
