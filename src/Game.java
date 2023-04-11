@@ -1,4 +1,5 @@
 import model.Player;
+import model.Board;
 import util.FileIO;
 import util.TextUI;
 
@@ -17,6 +18,7 @@ public class Game {
     private TextUI ui = new TextUI();
     private FileIO io = new FileIO();
     private Player currentPlayer;
+    private Board board;
 
 
     public Game(int maxPlayers, int minPlayers) {
@@ -79,9 +81,9 @@ public class Game {
 
   public void boardSetup(){
 
-        /*String[] fielddata = io.readBoardData("fielddata.csv");
-        String[] carddata = io.readBoardData("fielddata.csv");
-        this.board = new Board(fielddata, carddata);*/
+        String[] fielddata = io.readBoardData("fielddata.csv");
+        String[] carddata = io.readBoardData("carddata.csv");
+        this.board = new Board(fielddata, carddata);
     }
 
     public void playerSetup(){
