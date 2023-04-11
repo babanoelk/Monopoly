@@ -17,7 +17,11 @@ public class Field {
         this.income = income;
 
     }
+    @Override
+    public String toString(){
 
+        return ID + label;
+    }
 
 
 
