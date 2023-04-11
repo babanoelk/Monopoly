@@ -66,23 +66,25 @@ public class Game {
                 }
                 displayPlayers();
                 runGameLoop();
-
-
             } else {
                 runPlayerSetupDialog();
             }
 
-
 // NO SAVED GAME DATA - RUN DIALOG AND CREATE PLAYER OBJECTS
-
         } else {
             runPlayerSetupDialog();
         }
-
-
         endGame();
-
     }
+
+  /*  public boardSetup(){
+
+        String[] fielddata = io.readBoardData("fielddata.csv");
+        String[] carddata = io.readBoardData("fielddata.csv");
+        this.board = new Board(fielddata, carddata);
+    }*/
+
+
 
     private void runPlayerSetupDialog() {
         int count = 0;
@@ -128,6 +130,7 @@ public class Game {
     }
 
     private void endGame() {
+        ui.showMessage("Spillet er gemt. Tak for denne gang");
         io.saveData("src/data.csv", this.getPlayers());
     }
 }
