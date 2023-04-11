@@ -58,9 +58,12 @@ public class FileIO {
 
     }
 
+<<<<<<< HEAD
+    public String []readBoardData = new String [10];{
+=======
     public String[] readBoardData(String path) {
 
-        file = new File(path);
+        file = new File("fielddata.csv");
         String[] arr = new String[10];
         int counter = 0;
         try {
@@ -79,6 +82,7 @@ public class FileIO {
 
         }
         return arr;
+>>>>>>> f98c75452cc5d83e52ae94332615ee161967cef6
 
     }
 }
