@@ -2,11 +2,11 @@ package model;
 
 public class Field {
 
-    String label;
-    int ID;
-    int cost;
-    int income;
-    String option;
+    protected String label;
+    protected int ID;
+    protected int cost;
+    protected int income;
+    protected String option;
 
 
     public Field(int ID, String label, int cost, int income){

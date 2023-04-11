@@ -18,10 +18,17 @@ class Dice
 class Board
 
 class Field
-class Property
+class Property {
+    + String toString()
+    + String onLand(Player p)
+    + String onAccept(Player p)
+    + String onReject(Player p)
+}
 class Consequence
 class Business
-class Plot
+class Plot {
+    + String onLand(Player p)
+}
 class Prison
 class Tax
 class Parking
