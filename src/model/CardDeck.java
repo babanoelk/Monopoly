@@ -5,9 +5,9 @@ public class CardDeck {
     int counter = 0;
     public CardDeck(String[] carddata) {
         this.carddata = carddata;
-        this.carddata[0] = "Tillykke!";
+      /*  this.carddata[0] = "Tillykke!";
         this.carddata[1] = "Betal 100 kr.!";
-        this.carddata[2] = "Gå i fængsel";
+        this.carddata[2] = "Gå i fængsel";*/
 
     }
     public String getNext(){
