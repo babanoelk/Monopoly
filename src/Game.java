@@ -21,6 +21,7 @@ public class Game {
 
     public Game(int maxPlayers, int minPlayers) {
         this.maxPlayers = maxPlayers;
+        this.minPlayers = minPlayers;
     }
 
 
