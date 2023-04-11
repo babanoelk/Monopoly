@@ -13,18 +13,18 @@ public class Property extends Field {
     }
 
     @Override
-    public String onLand() {
+    public String onLand(Player p) {
         return "";
 
     }
 
     @Override
-    public String onAccept() {
+    public String onAccept(Player p) {
         return "";
     }
 
     @Override
-    public String onReject() {
+    public String onReject(Player p) {
         return "";
     }
 

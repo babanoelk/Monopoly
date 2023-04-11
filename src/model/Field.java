@@ -23,17 +23,21 @@ public class Field {
         return ID + label;
     }
 
-    public String onLand(){
+    public String onLand(Player p){
 
         return "";
     }
 
-    protected String onAccept(){
+    public String processResponse(Player p){
+        return "";
+    }
+
+    protected String onAccept(Player p){
 
         return "";
     }
 
-    protected String onReject(){
+    protected String onReject(Player p){
 
         return "";
     }
