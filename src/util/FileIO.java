@@ -59,14 +59,13 @@ public class FileIO {
     }
 
 
-    public String[] readBoardData(String path) {
+    public String[] readBoardData(String path, int length) {
 
         file = new File(path);
-        String[] arr = new String[10];
+        String[] arr = new String[length];
         int counter = 0;
         try {
             scan = new Scanner(file);
-
             scan.nextLine(); // ignore header in csv
 
             while (scan.hasNextLine()) {
