@@ -1,11 +1,41 @@
 ID, FieldType, Label, Cost, Income, SeriesID
-1, start, start, 0, 3000, 0
-2, plot, Rødovrevej, 1200, 300, 1
-3, chance, chance, 0, 0, 0
-4, plot, Hvidovre, 1200, 300, 1
-5, tax, betal 10% eller 4000, 10% || 4000, 0, 10
-6, shippingLine, øresund A/S, 4000, 2000, 11
-7, plot, Roskildevej, 2000, 600, 2
-8, chance, chance, 0, 0, 0
-9, plot, Valby Langgade, 2000, 600, 2
-10, plot, Allegade, 2400, 800, 2
+1, Start, GO, 0, 2000, 0
+2, Plot, Rødovre, 550, 20, 1
+3, Chance, Prøv Lykken, 0, 0, 2
+4, Plot, Hvidovrevej, 600, 25, 1
+5, Tax, IncomeTax, 0, 200, 3
+6, ShippingLine, Airport1, 500, 20, 4
+7, Plot, B1, 650, 30, 5
+8, Chance, QuestionMark, 0, 0, 2
+9, Plot, B2, 700, 35, 5
+10, Plot, B3, 750, 40, 5
+11, Prison, Jail/Visit, 0, 0, 6
+12, Plot, C1, 800, 45, 7
+13, Brewery, TaxFraud1, 500, 3000, 8
+14, Plot, C2, 850, 50, 7
+15, Plot, C3, 900, 55, 7
+16, ShippingLine, Airport2, 500, 20, 4
+17, Plot, D1, 950, 60, 9
+18, Chance, QuestionMark, 0, 0, 2
+19, Plot, D2, 1000, 65, 9
+20, Plot, D3, 1050, 70, 9
+21, Parking, ParkingLot, 0, 0, 10
+22, Plot, E1, 1100, 75, 11
+23, Chance, QuestionMark, 0, 0, 2
+24, Plot, E2, 1150, 80, 11
+25, Plot, E3, 1200, 85, 11
+26, ShippingLine, Airport3, 500, 20, 4
+27, Plot, F1, 1250, 90, 12
+28, Plot, F2, 1300, 95, 12
+29, Brewery, TaxFraud2, 500, 1000, 8
+30, Plot, F3, 1350, 100, 12
+31, Prison, Jail, 0, 0, 13
+32, Plot, G1, 1400, 105, 14
+33, Plot, G2, 1450, 110, 14
+34, Chance, QuestionMark, 0, 0, 2
+35, Plot, G3, 1500, 115, 14
+36, ShippingLine, Airport4, 500, 20, 4
+37, Chance, QuestionMark, 0, 0, 2
+38, Plot, H1, 1550, 120, 15
+39, Tax, LuxuryTax, 0, 100, 3
+40, Plot, H2, 1600, 125, 15
