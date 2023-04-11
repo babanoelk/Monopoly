@@ -11,6 +11,7 @@ class FileIO
 package "model"{
 class Player
 class Account
+class CardDeck
 }
 class Dice
 class Board
@@ -24,6 +25,7 @@ Player *-- Account
 Game *--Board
 Board *-- Dice
 Board *-- Field
+Board *-- CardDeck
 Main : + static void main(string [] args)
 
 
@@ -83,5 +85,9 @@ Board : - CardDeck cardDeck
 Board : + Board(String [] fields, String [] cards])
 Board : - void createFields(String [] data)
 Board : + Field getField(int id)
+
+CardDeck : - String[] cardData
+CardDeck : + CardDeck(String[] cardData]
+CardDeck : + String getNext()
 
 @enduml

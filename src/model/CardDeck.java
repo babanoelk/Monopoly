@@ -13,4 +13,11 @@ public class CardDeck {
 
     }
 
+    public String getNext(){
+        int count = 0;
+        String outPut = this.carddata[count];
+        count++;
+        return outPut;
+    }
+
 }
