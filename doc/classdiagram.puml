@@ -1,5 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
+!pragma layout smetana
+
 
 class Main
 class Game
@@ -14,7 +16,28 @@ class Account
 }
 class Dice
 class Board
+
 class Field
+class Property {
+    + String toString()
+    + String onLand(Player p)
+    + String onAccept(Player p)
+    + String onReject(Player p)
+}
+class Consequence
+class Business
+class Plot {
+    + String onLand(Player p)
+}
+class Prison
+class Tax
+class Parking
+class Start
+class Chance
+class ShippingLine
+class Brewery
+
+
 
 Main *-- Game
 Game *-- TextUI
@@ -24,6 +47,19 @@ Player *-- Account
 Game *--Board
 Board *-- Dice
 Board *-- Field
+Field <|-- Property
+Field <|-- Consequence
+Property <|-- Business
+Property <|-- Plot
+Business <|-- ShippingLine
+Business <|-- Brewery
+Consequence <|-- Prison
+Consequence <|-- Tax
+Consequence <|-- Parking
+Consequence <|-- Start : is - a
+Consequence <|-- Chance
+
+
 Main : + static void main(string [] args)
 
 
@@ -72,11 +108,18 @@ FileIO : + readGameData(String path)
 FileIO : + void saveData(String path, ArrayList<Player> players)
 FileIO : + String[] readBoardData(String path)
 
-Field : + Field(ID, label, cost, income)
 Field : - String label
 Field : - int ID
 Field : - int cost
 Field : - int income
+Field : - String option
+Field : + Field(ID, label, cost, income)
+Field : + String toString()
+Field : + String onLand(Player p)
+Field : + String processResponse(Player p)
+Field : # String onAccept(Player p)
+Field : # String onReject(Player p)
+
 
 Board : - Field[] fields
 Board : - CardDeck cardDeck
