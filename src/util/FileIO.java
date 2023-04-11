@@ -56,4 +56,8 @@ public class FileIO {
         }
 
     }
+
+    public String []readBoardData = new String [10];{
+
+    }
 }

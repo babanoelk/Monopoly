@@ -1,0 +1,11 @@
+ID, FieldType, Label, Cost, Income, SeriesID
+1, start, start, 0, 3000, 0
+2, plot, Rødovrevej, 1200, 300, 1
+3, chance, chance, 0, 0, 0
+4, plot, Hvidovre, 1200, 300, 1
+5, tax, betal 10% eller 4000, 10% || 4000, 0, 10
+6, shippingLine, øresund A/S, 4000, 2000, 11
+7, plot, Roskildevej, 2000, 600, 2
+8, chance, chance, 0, 0, 0
+9, plot, Valby Langgade, 2000, 600, 2
+10, plot, Allegade, 2400, 800, 2
