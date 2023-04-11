@@ -1,13 +1,16 @@
 package model;
 
+import javax.swing.undo.UndoableEdit;
 import java.lang.reflect.Field;
 
 public class Board {
 
     private Field[] fields = new Field[40];
+    private CardDeck cardDeck;
 
-    public Board(String[] data){
-        createFields(data);
+    public Board(String[] fields,String[]cards){
+        createFields(fields);
+        this.cardDeck = new CardDeck(cards);
 
     }
 
