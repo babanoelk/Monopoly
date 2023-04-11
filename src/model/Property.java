@@ -1,10 +1,11 @@
 package model;
 
 public class Property extends Field {
+    private final int seriesID;
 
-
-    public Property(int ID, String label, int cost, int income) {
+    public Property(int ID, String label, int cost, int income, int seriesID) {
         super(ID, label, cost, income);
+        this.seriesID = seriesID;
     }
 
     @Override
