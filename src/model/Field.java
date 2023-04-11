@@ -23,6 +23,21 @@ public class Field {
         return ID + label;
     }
 
+    public String onLand(){
+
+        return "";
+    }
+
+    protected String onAccept(){
+
+        return "";
+    }
+
+    protected String onReject(){
+
+        return "";
+    }
+
 
 
 }
