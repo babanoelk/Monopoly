@@ -20,6 +20,7 @@ public class Game {
 
 
     public Game(int maxPlayers, int minPlayers) {
+        this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
     }
 
@@ -47,7 +48,7 @@ public class Game {
         return players;
     }
 
-    public void setup() {
+    public void playerSetup() {
 
         ArrayList<String> data = io.readGameData("src/data.csv");
 
@@ -65,23 +66,22 @@ public class Game {
                     p.receiveAmount(balance);
                 }
                 displayPlayers();
-                runGameLoop();
+                //runGameLoop();
             } else {
                 runPlayerSetupDialog();
+                //runGameLoop();
             }
 
 // NO SAVED GAME DATA - RUN DIALOG AND CREATE PLAYER OBJECTS
         } else {
             runPlayerSetupDialog();
+            //runGameLoop();
         }
-        endGame();
     }
 
   /*  public boardSetup(){
 
-        String[] fielddata = io.readBoardData("fielddata.csv");
-        String[] carddata = io.readBoardData("fielddata.csv");
-        this.board = new Board(fielddata, carddata);
+
     }*/
 
 
@@ -92,7 +92,7 @@ public class Game {
             String name = ui.getInput("Skriv spillernavn navn eller Q for at afslutte dialog: ");
             //
             if (name.equalsIgnoreCase("q")) {
-                if (players.size() > minPlayers) {
+                if (players.size() >= minPlayers) {
                     break;
                 } else {
                     ui.displayMessage("It takes two to monopolize");
@@ -132,5 +132,11 @@ public class Game {
     private void endGame() {
         ui.showMessage("Spillet er gemt. Tak for denne gang");
         io.saveData("src/data.csv", this.getPlayers());
+    }
+
+    public void boardSetup() {
+        //String[] fielddata = io.readBoardData("fielddata.csv");
+        //String[] carddata = io.readBoardData("carddata.csv");
+        //this.board = new Board(fielddata, carddata);
     }
 }
