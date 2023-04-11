@@ -1,6 +1,7 @@
 package util;
 
 import model.Player;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -54,6 +55,30 @@ public class FileIO {
 
 
         }
+
+    }
+
+    public String[] readBoardData(String path) {
+
+        file = new File(path);
+        String[] arr = new String[10];
+        int counter = 0;
+        try {
+            scan = new Scanner(file);
+
+            scan.nextLine(); // ignore header in csv
+
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                arr[counter] = line;
+                counter++;
+
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("The file was not found");
+
+        }
+        return arr;
 
     }
 }
