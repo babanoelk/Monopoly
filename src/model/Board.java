@@ -18,7 +18,7 @@ public class Board {
         int counter =0;
         for(String s : data){
             String[] line = s.split(",");
-            Field f = new Field(line);
+            Field f = new Field(line[0],line[1],line[2],line[3],line[4]);
             fields[counter] = f;
             counter++;
         }
