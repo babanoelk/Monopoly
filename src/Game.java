@@ -20,7 +20,9 @@ public class Game {
 
 
     public Game(int maxPlayers, int minPlayers) {
+
         this.maxPlayers = maxPlayers;
+        this.minPlayers = minPlayers;
     }
 
 
@@ -47,7 +49,7 @@ public class Game {
         return players;
     }
 
-    public void setup() {
+    public void playerSetup() {
 
         ArrayList<String> data = io.readGameData("src/data.csv");
 
@@ -65,7 +67,7 @@ public class Game {
                     p.receiveAmount(balance);
                 }
                 displayPlayers();
-                runGameLoop();
+
             } else {
                 runPlayerSetupDialog();
             }
@@ -74,15 +76,16 @@ public class Game {
         } else {
             runPlayerSetupDialog();
         }
-        endGame();
+      //  endGame();
     }
 
-  /*  public boardSetup(){
 
-        String[] fielddata = io.readBoardData("fielddata.csv");
-        String[] carddata = io.readBoardData("fielddata.csv");
-        this.board = new Board(fielddata, carddata);
-    }*/
+
+ public void boardSetup(){
+
+
+ }
+
 
 
 
@@ -92,7 +95,7 @@ public class Game {
             String name = ui.getInput("Skriv spillernavn navn eller Q for at afslutte dialog: ");
             //
             if (name.equalsIgnoreCase("q")) {
-                if (players.size() > minPlayers) {
+                if (players.size() >= minPlayers) {
                     break;
                 } else {
                     ui.displayMessage("It takes two to monopolize");
