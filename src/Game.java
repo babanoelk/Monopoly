@@ -20,8 +20,8 @@ public class Game {
 
 
     public Game(int maxPlayers, int minPlayers) {
-        this.minPlayers = minPlayers;
         this.maxPlayers = maxPlayers;
+        this.minPlayers = minPlayers;
     }
 
 
@@ -66,23 +66,24 @@ public class Game {
                     p.receiveAmount(balance);
                 }
                 displayPlayers();
-                //runGameLoop();
+                runGameLoop();
             } else {
                 runPlayerSetupDialog();
-                //runGameLoop();
             }
 
 // NO SAVED GAME DATA - RUN DIALOG AND CREATE PLAYER OBJECTS
         } else {
             runPlayerSetupDialog();
-            //runGameLoop();
         }
+        //endGame();
     }
 
-  /*  public boardSetup(){
+    public void boardSetup(){
 
-
-    }*/
+        String[] fielddata = io.readBoardData("fielddata.csv");
+        String[] carddata = io.readBoardData("fielddata.csv");
+        this.board = new Board(fielddata, carddata);
+    }
 
 
 
@@ -132,11 +133,5 @@ public class Game {
     private void endGame() {
         ui.showMessage("Spillet er gemt. Tak for denne gang");
         io.saveData("src/data.csv", this.getPlayers());
-    }
-
-    public void boardSetup() {
-        //String[] fielddata = io.readBoardData("fielddata.csv");
-        //String[] carddata = io.readBoardData("carddata.csv");
-        //this.board = new Board(fielddata, carddata);
     }
 }

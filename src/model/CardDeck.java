@@ -1,28 +1,21 @@
 package model;
 
 public class CardDeck {
-    private int count;
-
-    private String[] cardData = new String[100];
-
-    //TEST COMMENT
-
-    public CardDeck(String[] carddata){
-
-        this.cardData = carddata;
-
-        cardData[0] = "Hej";
-        cardData[1] = "Med";
-        cardData[2] = "Dig!";
+    private String[] carddata = new String[100];
+    int counter = 0;
+    public CardDeck(String[] carddata) {
+        this.carddata = carddata;
+        this.carddata[0] = "Tillykke!";
+        this.carddata[1] = "Betal 100 kr.!";
+        this.carddata[2] = "Gå i fængsel";
 
     }
-
     public String getNext(){
-        String outPut = this.cardData[count];
-        count++;
-        if(count >= cardData.length){
-            count = 0;
+        String output = carddata[counter];
+        counter++;
+        if(counter > carddata.length){
+            counter = 0;
         }
-        return outPut;
+        return output;
     }
 }

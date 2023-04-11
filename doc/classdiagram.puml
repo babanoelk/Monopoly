@@ -86,8 +86,8 @@ Board : + Board(String [] fields, String [] cards])
 Board : - void createFields(String [] data)
 Board : + Field getField(int id)
 
-CardDeck : - String[] cardData
-CardDeck : + CardDeck(String[] cardData]
+CardDeck : - String[] carddata
+CardDeck : + CardDeck
 CardDeck : + String getNext()
 
 @enduml
